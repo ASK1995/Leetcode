@@ -1,0 +1,22 @@
+from collections import defaultdict
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        letters = defaultdict(lambda:0)
+        
+        
+        for letter in s:
+            letters[letter] += 1
+        
+        total_length = 0
+        odds = 0
+
+        for key in letters.keys():
+            if(letters[key] % 2 != 0):
+                total_length += letters[key] - 1
+                odds += 1
+            else:
+                total_length += letters[key]
+        
+        if(odds != 0):
+            total_length = total_length + 1
+        return total_length

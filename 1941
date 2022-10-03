@@ -1,0 +1,13 @@
+from collections import defaultdict
+
+class Solution:
+    def areOccurrencesEqual(self, s: str) -> bool:
+        occurences = defaultdict(lambda:0)
+        
+        for letter in s:
+            occurences[letter] += 1
+        
+        if(all(occurences[key] == occurences[s[0]] for key in occurences.keys())):
+            return True
+        
+        return False

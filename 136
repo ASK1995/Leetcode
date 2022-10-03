@@ -1,0 +1,8 @@
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        xor_total = 0
+        
+        for num in nums:
+            xor_total ^= num
+        
+        return xor_total

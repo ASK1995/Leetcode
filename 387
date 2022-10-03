@@ -1,0 +1,16 @@
+from collections import defaultdict
+
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        letters = defaultdict(lambda:0)
+        
+        for letter in s:
+            letters[letter] += 1
+        
+        for index, letter in enumerate(s):
+            if(letters[letter] == 1):
+                return index
+        
+        return -1
+        
+        

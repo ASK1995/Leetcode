@@ -1,0 +1,10 @@
+from collections import defaultdict
+
+class Solution:
+    def repeatedCharacter(self, s: str) -> str:
+        letters = defaultdict(lambda:0)
+        for letter in s:
+            letters[letter] += 1
+            if(letters[letter] > 1):
+                return letter
+            

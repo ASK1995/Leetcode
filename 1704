@@ -1,0 +1,13 @@
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        vowels = set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+        f, s = s[:len(s)//2], s[len(s)//2:]
+        vowel_count1, vowel_count2 = 0, 0
+        for letter in f:
+            if(letter in vowels):
+                vowel_count1 += 1
+        for letter in s:
+            if(letter in vowels):
+                vowel_count2 += 1
+                
+        return vowel_count1 == vowel_count2

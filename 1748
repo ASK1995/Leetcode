@@ -1,0 +1,17 @@
+class Solution:
+    def sumOfUnique(self, nums: List[int]) -> int:
+        occur_once = set()
+        occur_twice = set()
+        
+        for num in nums:
+            if(num in occur_once):
+                occur_twice.add(num)
+            else:
+                occur_once.add(num)
+        
+        total = 0
+        for number in occur_once:
+            if(number not in occur_twice):
+                total += number
+        
+        return total

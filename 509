@@ -1,0 +1,9 @@
+class Solution:
+    def fib(self, n: int) -> int:
+        current, next = 0, 1
+        
+        while(n != 0):
+            current, next = next, current + next
+            n -= 1
+        
+        return current

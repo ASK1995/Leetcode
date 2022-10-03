@@ -1,0 +1,12 @@
+class Solution:
+    def decompressRLElist(self, nums: List[int]) -> List[int]:
+        freq_index, value_index = 0, 1
+        res = []
+
+        while(value_index < len(nums)):
+            frequency = nums[freq_index]
+            while(frequency != 0):
+                res.append(nums[value_index])
+                frequency -= 1
+            freq_index, value_index = freq_index + 2, value_index + 2
+        return res

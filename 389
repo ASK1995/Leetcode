@@ -1,0 +1,11 @@
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        xor_total = 0
+        
+        for letter in s:
+            xor_total ^= ord(letter)
+        
+        for letter in t:
+            xor_total ^= ord(letter)
+        
+        return chr(xor_total)

@@ -1,0 +1,19 @@
+from collections import defaultdict
+
+class Solution:
+    def canPermutePalindrome(self, s: str) -> bool:
+        letters = defaultdict(lambda:0)
+        
+        
+        for letter in s:
+            letters[letter] += 1
+        
+        odds = 0
+        
+        for key in letters.keys():
+            if(letters[key] % 2 != 0):
+                odds += 1
+        
+        if(odds <= 1):
+            return True
+        return False
