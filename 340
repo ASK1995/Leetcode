@@ -1,0 +1,17 @@
+from collections import defaultdict
+
+class Solution:
+    def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:
+        characters = defaultdict(lambda:0)
+        start_index = 0
+        max_k = 0
+
+        for index, character in enumerate(s):
+            characters[character] += 1
+            while(len(characters) > k):
+                characters[s[start_index]] -= 1
+                if(characters[s[start_index]] == 0):
+                    del characters[s[start_index]]
+                start_index += 1
+            max_k = max(index - start_index + 1, max_k)
+        return max_k

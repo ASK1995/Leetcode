@@ -1,0 +1,10 @@
+class Solution:
+    def replaceDigits(self, s: str) -> str:
+        res = ""
+        
+        for index in range(0, len(s), 2):
+            if(index + 1 < len(s)):
+                res = res + s[index] + chr(ord(s[index]) + int(s[index + 1]))
+            else:
+                res = res + s[index]
+        return res

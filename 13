@@ -1,0 +1,36 @@
+from collections import defaultdict
+
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        maps = defaultdict()
+        maps['I'] = 1
+        maps['V'] = 5
+        maps['X'] = 10
+        maps['L'] = 50
+        maps['C'] = 100
+        maps['D'] = 500
+        maps['M'] = 1000
+
+        prev_letter = None
+        current_sum = 0
+        total = 0
+
+        for letter in s:
+            if(prev_letter == None):
+                prev_letter = letter
+                current_sum = maps[letter]
+            else:
+                if(maps[letter] < maps[prev_letter]):
+                    total += current_sum
+                    current_sum = maps[letter]
+                elif(maps[letter] == maps[prev_letter]):
+                    current_sum += maps[letter]  
+                else:
+                    current_sum = maps[letter] - current_sum
+                    total += current_sum
+                    current_sum = 0
+            prev_letter = letter
+            
+        
+        total += current_sum
+        return total

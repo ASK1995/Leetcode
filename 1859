@@ -1,0 +1,15 @@
+from collections import defaultdict
+
+class Solution:
+    def sortSentence(self, s: str) -> str:
+        words = s.split()
+        word_order = defaultdict(lambda:"")
+        res = ""
+
+        for word in words:
+            word_order[int(word[-1])] = word[:-1]
+        
+        for i in range(1, len(words) + 1):
+            res += word_order[i] + " "
+        
+        return res[:-1]

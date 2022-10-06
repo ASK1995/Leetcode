@@ -1,0 +1,21 @@
+from collections import defaultdict
+
+class Solution:
+    def countCharacters(self, words: List[str], chars: str) -> int:
+        char_count = defaultdict(lambda:0)
+        
+        for letter in chars:
+            char_count[letter] += 1
+        
+        total = 0
+
+        for word in words:
+            word_counter = defaultdict(lambda:0)
+            for letter in word:
+                word_counter[letter] += 1
+
+            if(all(word_counter[key] <= char_count[key] for key in word_counter.keys())):
+                total += len(word)
+            del word_counter
+        
+        return total

@@ -1,0 +1,20 @@
+from collections import defaultdict
+
+class Solution:
+    def countGoodSubstrings(self, s: str) -> int:
+        letters = defaultdict(lambda:0)
+        start_index = 0
+        count = 0
+        
+        for index, letter in enumerate(s):
+            letters[letter] += 1
+            remover = s[start_index]
+            if(index < 2):
+                continue
+            if(len(letters) == 3):
+                count += 1
+            letters[remover] -= 1
+            if(letters[remover] == 0):
+                del letters[remover]
+            start_index += 1        
+        return count

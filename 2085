@@ -1,0 +1,22 @@
+from collections import defaultdict
+
+class Solution:
+    def countWords(self, words1: List[str], words2: List[str]) -> int:
+        word_count1 = defaultdict(lambda:0)
+        word_count2 = defaultdict(lambda:0)
+        s1 = set(words1)
+        s2 = set(words2)
+        s = s1 & s2
+
+        for word in words1:
+            word_count1[word] += 1
+        
+        for word in words2:
+            word_count2[word] += 1
+        
+        count = 0
+        for element in s:
+            if(word_count1[element] == 1 and word_count2[element] == 1):
+                count += 1
+        
+        return count

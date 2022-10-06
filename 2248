@@ -1,0 +1,10 @@
+class Solution:
+    def intersection(self, nums: List[List[int]]) -> List[int]:
+        res = set(nums[0])
+        
+        for index, num in enumerate(nums):
+            res = res & set(num)
+        
+        res = list(res)
+        res.sort()
+        return res

@@ -1,0 +1,17 @@
+from collections import defaultdict
+
+class Solution:
+    def checkIfExist(self, arr: List[int]) -> bool:
+        numbers = defaultdict(lambda:0)
+        
+        for number in arr:
+            numbers[number] += 1
+        
+        for number in arr:
+            if(number == 0):
+                if(numbers[number] >= 2):
+                    return True
+            elif(numbers[number * 2] >= 1):
+                return True
+
+        return False

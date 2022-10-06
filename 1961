@@ -1,0 +1,16 @@
+class Solution:
+    def isPrefixString(self, s: str, words: List[str]) -> bool:
+        current_word = ""
+        s_len = len(s)
+
+        for word in words:
+            current_word += word
+
+            if(s[:len(current_word)] != current_word):
+                return False
+            else:
+                if(len(current_word) == s_len):
+                    return current_word == s
+        return False
+        
+        

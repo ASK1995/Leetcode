@@ -1,0 +1,13 @@
+from collections import defaultdict
+
+class Solution:
+    def findFinalValue(self, nums: List[int], original: int) -> int:
+        numbers = defaultdict(lambda:0)
+        
+        for num in nums:
+            numbers[num] = 1
+    
+        while(numbers[original] >= 1):
+            original *= 2
+        
+        return original
