@@ -1,0 +1,16 @@
+class Solution:
+    def bitwiseComplement(self, n: int) -> int:
+        s = ""
+        if(n == 0):
+            s = "0"
+        while(n != 0):
+            s += str(n%2)
+            n //= 2
+            
+        mul = 1
+        res = 0
+        for i in s:
+            if(i == '0'):
+                res += mul
+            mul *= 2
+        return res

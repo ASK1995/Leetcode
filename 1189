@@ -1,0 +1,17 @@
+from collections import defaultdict
+
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        letters = defaultdict(lambda:0)
+        min_balloons = len(text)
+
+        for letter in text:
+            letters[letter] += 1
+        
+        min_balloons = min(min_balloons, letters['b'])
+        min_balloons = min(min_balloons, letters['a'])
+        min_balloons = min(min_balloons, letters['l']//2)
+        min_balloons = min(min_balloons, letters['o']//2)
+        min_balloons = min(min_balloons, letters['n'])
+        
+        return min_balloons

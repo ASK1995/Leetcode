@@ -1,0 +1,8 @@
+class Solution:
+    def mostWordsFound(self, sentences: List[str]) -> int:
+        total = 0
+        for sentence in sentences:
+            l = sentence.split()
+            total = max(total, len(l))
+        
+        return total

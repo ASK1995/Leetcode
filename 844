@@ -1,0 +1,29 @@
+class Solution:
+    def backspaceCompare(self, s: str, t: str) -> bool:
+        res = list(s)
+        start_index = 0
+
+        for index, letter in enumerate(s):
+            if(letter == '#'):
+                if(start_index != 0):
+                    start_index -= 1
+            else:
+                res[start_index] = letter
+                start_index += 1
+        
+        s = "".join(res[:start_index])
+        
+        res = list(t)
+        start_index = 0
+
+        for index, letter in enumerate(t):
+            if(letter == '#'):
+                if(start_index != 0):
+                    start_index -= 1
+            else:
+                res[start_index] = letter
+                start_index += 1
+        
+        t = "".join(res[:start_index])
+        
+        return s == t

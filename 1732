@@ -1,0 +1,11 @@
+class Solution:
+    def largestAltitude(self, gain: List[int]) -> int:
+        prefix_sum = []
+        total = 0
+
+        for number in gain:
+            prefix_sum.append(total)
+            total += number
+        prefix_sum.append(total)
+        print(prefix_sum)
+        return max(prefix_sum)

@@ -1,0 +1,12 @@
+class Solution:
+    def subtractProductAndSum(self, n: int) -> int:
+        prod = 1
+        total = 0
+        
+        while(n != 0):
+            last = n%10
+            prod *= last
+            total += last
+            n //= 10
+        
+        return prod - total

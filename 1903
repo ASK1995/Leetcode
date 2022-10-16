@@ -1,0 +1,9 @@
+class Solution:
+    def largestOddNumber(self, num: str) -> str:
+        for index in range(len(num) - 1, -1, -1):
+            digit = num[index]
+            if(int(digit) % 2 != 0):
+                return num[:index + 1]
+            
+        return ""
+        

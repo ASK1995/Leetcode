@@ -1,0 +1,19 @@
+class Solution:
+    def bestHand(self, ranks: List[int], suits: List[str]) -> str:
+        if(len(set(suits)) == 1):
+            return "Flush"
+        rank_set = set(ranks)
+        
+        res = set()
+        for rank in rank_set:
+            if(ranks.count(rank) >= 3):
+                res.add("Three of a Kind")
+            elif((ranks.count(rank) == 2)):
+                res.add("Pair")
+        
+        if("Three of a Kind" in res):
+            return "Three of a Kind"
+        elif("Pair" in res):
+            return "Pair"
+        
+        return "High Card"

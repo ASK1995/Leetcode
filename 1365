@@ -1,0 +1,17 @@
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        smaller = [0]*500
+        
+        for num in nums:
+            smaller[num] += 1
+        
+        for i in range(1, 500):
+            smaller[i] = smaller[i] + smaller[i-1]
+        
+        res = []
+        for num in nums:
+            if(num > 0):
+                res.append(smaller[num-1])
+            else:
+                res.append(0)
+        return res

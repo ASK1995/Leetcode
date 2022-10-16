@@ -1,0 +1,13 @@
+class Solution:
+    def maximum69Number (self, num: int) -> int:
+        s = str(num)
+        res = ""
+        for index, value in enumerate(s):
+            if(value == '9'):
+                res += value
+            else:
+                res += '9'
+                res += s[index+1:]
+                break
+        
+        return int(res)

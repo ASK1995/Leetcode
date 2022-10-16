@@ -1,0 +1,13 @@
+class Solution:
+    def removeStars(self, s: str) -> str:
+        res = list(s)
+        start_index = 0
+
+        for index, letter in enumerate(s):
+            if(letter == '*'):
+                start_index -= 1
+            else:
+                res[start_index] = letter
+                start_index += 1
+        
+        return "".join(res[:start_index])
