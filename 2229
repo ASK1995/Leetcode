@@ -1,0 +1,11 @@
+class Solution:
+    def isConsecutive(self, nums: List[int]) -> bool:
+        s = set(nums)
+        
+        least = min(nums)
+        
+        for i in range(len(nums)):
+            if(least + i not in s):
+                return False
+        
+        return True

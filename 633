@@ -1,0 +1,18 @@
+from collections import defaultdict
+
+class Solution:
+    def judgeSquareSum(self, c: int) -> bool:
+        squares = defaultdict(lambda:0)
+        i = 0
+        
+        while(i * i <= c):
+            squares[i*i] += 1
+            i += 1
+        
+        keys = [key for key in squares.keys()]
+
+        for square in keys:
+            if(int(square) > c):
+                return False
+            if(squares[c - square] >= 1):
+                return True

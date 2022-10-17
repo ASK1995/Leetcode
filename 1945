@@ -1,0 +1,21 @@
+class Solution:
+    def getLucky(self, s: str, k: int) -> int:
+        count = 0
+        res = ""
+
+        for letter in s:
+            res += str(ord(letter) - 96)
+        
+        for letter in res:
+            count += int(letter)
+
+        digits_sum = 0
+        k -= 1
+        while(k != 0):
+            while(count != 0):
+                digits_sum += count%10
+                count = count//10
+            digits_sum, count = 0, digits_sum
+            k -= 1
+        
+        return count

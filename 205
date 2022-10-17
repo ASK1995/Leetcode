@@ -1,0 +1,19 @@
+from collections import defaultdict
+
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        maps = defaultdict(lambda:-1)
+        words = set()
+        if(len(s) != len(t)):
+            return False
+
+        for letter, word in zip(s, t):
+            if(maps[letter] == -1):
+                if(word not in words):
+                    maps[letter] = word
+                    words.add(word)
+                else:
+                    return False
+            elif(maps[letter] != word):
+                return False
+        return True

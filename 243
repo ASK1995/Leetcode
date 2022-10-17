@@ -1,0 +1,13 @@
+from collections import defaultdict
+
+class Solution:
+    def shortestDistance(self, wordsDict: List[str], word1: str, word2: str) -> int:
+        indexes = defaultdict(lambda:-1)
+        min_diff = len(wordsDict)
+
+        for index, word in enumerate(wordsDict):
+            indexes[word] = index
+            if(indexes[word1] != -1 and indexes[word2] != -1):
+                min_diff = min(min_diff, abs(indexes[word1] - indexes[word2]))
+        
+        return min_diff

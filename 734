@@ -1,0 +1,19 @@
+class Solution:
+    def areSentencesSimilar(self, sentence1: List[str], sentence2: List[str], similarPairs: List[List[str]]) -> bool:
+        if(len(sentence1) != len(sentence2)):
+            return False
+        
+        s = set()
+        
+        for key, value in similarPairs:
+            s.add((key,value))
+
+        for value1, value2 in zip(sentence1, sentence2):
+            if(value1 == value2):
+                continue
+            elif((value1, value2) in s or (value2, value1) in s):
+                continue
+            else:
+                return False
+        
+        return True

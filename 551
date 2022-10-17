@@ -1,0 +1,22 @@
+class Solution:
+    def checkRecord(self, s: str) -> bool:
+        if(s.count('A') >= 2):
+            return False
+        
+        ls, inn = 0, False
+        
+        
+        for i in s:
+            if(i == 'L'):
+                if(not inn):
+                    inn = True
+                    ls = 1
+                else:
+                    ls += 1
+            else:
+                inn = False
+                if(ls >= 3):
+                    return False
+        if(ls >= 3):
+            return False
+        return True

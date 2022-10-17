@@ -1,0 +1,15 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        s = set()
+        total = 0
+
+        while(total != 1):
+            total = 0
+            while(n != 0):
+                total += (n%10)**2
+                n //= 10
+            if(total in s):
+                return False
+            s.add(total)
+            n = total
+        return True

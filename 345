@@ -1,0 +1,25 @@
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        vowels = set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+        start_index = 0
+        end_index = len(s) - 1
+        s = list(s)
+
+        while(start_index < end_index):
+            while(start_index < len(s) and start_index < end_index):
+                if(s[start_index] in vowels):
+                    break
+                else:
+                    start_index += 1
+            
+            while(end_index >= 0 and end_index > start_index):
+                if(s[end_index] in vowels):
+                    break
+                else:
+                    end_index -= 1
+            
+            s[start_index], s[end_index] = s[end_index], s[start_index]
+            start_index += 1
+            end_index -= 1
+        
+        return "".join(s)

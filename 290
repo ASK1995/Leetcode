@@ -1,0 +1,21 @@
+from collections import defaultdict
+
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        l = s.split()
+        maps = defaultdict(lambda:-1)
+        s = set()
+        if(len(pattern) != len(l)):
+            return False
+
+        for letter, word in zip(pattern, l):
+            if(maps[letter] == -1):
+                if(word not in s):
+                    maps[letter] = word
+                    s.add(word)
+                else:
+                    return False
+            elif(maps[letter] != word):
+                return False
+        return True
+                

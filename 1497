@@ -1,0 +1,16 @@
+from collections import defaultdict
+
+class Solution:
+    def canArrange(self, arr: List[int], k: int) -> bool:
+        remainders = defaultdict(lambda:0)
+        for index, num in enumerate(arr):
+            remainders[num%k] += 1
+        
+        for keys in remainders.keys():
+            if(keys == 0):
+                if(remainders[keys] % 2 != 0):
+                    return False
+            elif(remainders[keys] != remainders[k - keys]):
+                return False
+            
+        return True

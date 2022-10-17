@@ -1,0 +1,16 @@
+class Solution:
+    def greatestLetter(self, s: str) -> str:
+        lowers = set()
+        uppers = set()
+        
+        for letter in s:
+            if(letter.islower()):
+                lowers.add(letter)
+            else:
+                uppers.add(letter)
+        
+        for i in range(122, 96, -1):
+            if(chr(i) in lowers and chr(i - 32) in uppers):
+                return chr(i-32)
+        
+        return ""

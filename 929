@@ -1,0 +1,14 @@
+class Solution:
+    def numUniqueEmails(self, emails: List[str]) -> int:
+        s = set([])
+        
+        for email in emails:
+            mail, address = email.split('@')
+        
+            mail = mail.split("+")[0]
+            mail = mail.split(".")
+            mail = "".join(mail)
+            s.add(mail + '@' + address)
+        
+        return len(s)
+        
