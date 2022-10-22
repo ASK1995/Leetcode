@@ -1,0 +1,25 @@
+class Solution:
+    def minimumRecolors(self, blocks: str, k: int) -> int:
+        whites, blacks = 0, 0
+        min_required = k
+
+        for index in range(k):
+            if(blocks[index] == 'W'):
+                whites += 1
+            else:
+                blacks += 1
+        min_required = min(whites, min_required)
+        start_index = 0
+        for index in range(k, len(blocks)):
+            min_required = min(whites, min_required)
+            if(blocks[index] == 'W'):
+                whites += 1
+            else:
+                blacks += 1
+            if(blocks[start_index] == 'W'):
+                whites -= 1
+            else:
+                blacks -= 1
+            start_index += 1
+        min_required = min(whites, min_required)
+        return min_required

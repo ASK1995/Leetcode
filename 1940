@@ -1,0 +1,21 @@
+class Solution:
+    def longestCommonSubsequence(self, arrays: List[List[int]]) -> List[int]:
+        fixed = arrays[0]
+        
+        for index in range(1, len(arrays)):
+            current = arrays[index]
+            res = []
+            i1, i2 = 0, 0
+            
+            while(i1 < len(fixed) and i2 < len(current)):
+                if(fixed[i1] == current[i2]):
+                    res.append(fixed[i1])
+                    i1 += 1
+                    i2 += 1
+                elif(fixed[i1] > current[i2]):
+                    i2 += 1
+                else:
+                    i1 += 1
+            fixed = res
+            
+        return fixed

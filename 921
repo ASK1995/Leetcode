@@ -1,0 +1,15 @@
+class Solution:
+    def minAddToMakeValid(self, s: str) -> int:
+        l = []
+        count = 0
+
+        for letter in s:
+            if(letter == '('):
+                l.append(letter)
+            else:
+                if(len(l) == 0):
+                    count += 1
+                else:
+                    l.pop()
+        
+        return count + len(l)

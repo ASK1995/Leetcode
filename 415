@@ -1,0 +1,31 @@
+class Solution:
+    def addStrings(self, num1: str, num2: str) -> str:
+        i1 = len(num1) - 1
+        i2 = len(num2) - 1
+        total = ""
+        count, carry = 0, 0
+
+        while(i1 >= 0 and i2 >= 0):
+            count = int(num1[i1]) + int(num2[i2]) + carry
+            carry = count//10
+            total += str(count%10)
+            i1 -= 1
+            i2 -= 1
+            
+        
+        while(i1 >= 0):
+            count = int(num1[i1]) + carry
+            carry = count//10
+            total += str(count%10)
+            i1 -= 1
+        
+        while(i2 >= 0):
+            count = int(num2[i2]) + carry
+            carry = count//10
+            total += str(count%10)
+            i2 -= 1
+        
+        if(carry != 0):
+            total += "1"
+
+        return total[::-1]

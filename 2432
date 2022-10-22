@@ -1,0 +1,26 @@
+from collections import defaultdict
+
+class Solution:
+    def hardestWorker(self, n: int, logs: List[List[int]]) -> int:
+        times = defaultdict(lambda:0)
+        longest_time = -1
+        longest_employee = -1
+        for index in range(len(logs) - 2, -1, -1):
+            logs[index + 1][1] -= logs[index][1]
+        
+        for log in logs:
+            employee = log[0]
+            time = log[1]
+            if(times[employee] == 0):
+                times[employee] = time
+            else:
+                times[employee] = max(times[employee], time)
+            if(longest_time < times[employee]):
+                longest_time = times[employee]
+                longest_employee = employee
+            elif(longest_time == time):
+                longest_employee = min(longest_employee, employee)
+        
+        return longest_employee
+        
+            

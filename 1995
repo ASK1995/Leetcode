@@ -1,0 +1,12 @@
+class Solution:
+    def countQuadruplets(self, nums: List[int]) -> int:
+        count = 0
+        for index1 in range(len(nums)):
+            for index2 in range(index1 + 1, len(nums)):
+                for index3 in range(index2 + 1, len(nums)):
+                    for index4 in range(index3 + 1, len(nums)):
+                        num1, num2, num3, num4 = nums[index1], nums[index2], nums[index3], nums[index4]
+                        if(num1 + num2 + num3 == num4):
+                            count += 1
+        
+        return count

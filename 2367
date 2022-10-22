@@ -1,0 +1,13 @@
+class Solution:
+    def arithmeticTriplets(self, nums: List[int], diff: int) -> int:
+        n = len(nums)
+        count = 0
+
+        for index1 in range(n):
+            for index2 in range(index1 + 1, n):
+                for index3 in range(index2 + 1, n):
+                    num1, num2, num3 = nums[index1], nums[index2], nums[index3]
+                    if((num2 - num1) == diff and (num3 - num2) == diff):
+                        count += 1
+        
+        return count

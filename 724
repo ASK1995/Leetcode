@@ -1,0 +1,17 @@
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+        prefix_sum = []
+        total = 0
+        now_sum = 0
+
+        for num in nums:
+            prefix_sum.append(total)
+            total += num
+        
+        for index in range(len(nums)):
+            now_sum += nums[index]
+            if(prefix_sum[index] == (total - now_sum)):
+                return index    
+
+
+        return -1

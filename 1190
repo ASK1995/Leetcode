@@ -1,0 +1,20 @@
+from collections import deque
+
+class Solution:
+    def reverseParentheses(self, s: str) -> str:
+        l1 = deque([])
+        l2 = deque([])
+        
+        for letter in s:
+            if(letter != ')'):
+                l1.append(letter)
+            else:
+                while(l1[-1] != '('):
+                    l2.append(l1[-1])
+                    l1.pop()
+                l1.pop()
+                while(len(l2) != 0):
+                    l1.append(l2[0])
+                    l2.popleft()
+        
+        return "".join(l1)

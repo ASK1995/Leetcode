@@ -1,0 +1,23 @@
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        zeroes, ones = 0, 0
+        start_index = 0
+        max_ones = 0
+
+        for index in range(len(nums)):
+            if(nums[index] == 0):
+                zeroes += 1
+            else:
+                ones += 1
+
+            while(zeroes > 1):
+                if(nums[start_index] == 0):
+                    zeroes -= 1
+                else:
+                    ones -= 1
+                start_index += 1
+            max_ones = max(max_ones, index - start_index + 1)
+       
+        max_ones = max(max_ones, index - start_index + 1)
+        
+        return max_ones

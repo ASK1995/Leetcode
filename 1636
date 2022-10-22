@@ -1,0 +1,10 @@
+from collections import defaultdict
+
+class Solution:
+    def frequencySort(self, nums: List[int]) -> List[int]:
+        count = defaultdict(lambda:0)
+        
+        for num in nums:
+            count[num] += 1
+        
+        return sorted(nums, key = lambda value: (count[value], -1*value))

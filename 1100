@@ -1,0 +1,25 @@
+from collections import defaultdict
+
+class Solution:
+    def numKLenSubstrNoRepeats(self, s: str, k: int) -> int:
+        count = defaultdict(lambda:0)
+        start_index = 0
+        if(k > len(s)):
+            return 0
+        for index in range(k):
+            count[s[index]] += 1
+        
+        total = 0
+        for index in range(k, len(s)):
+            if(all(value == 1 for key, value in count.items())):
+                total += 1
+            count[s[index]] += 1
+            count[s[start_index]] -= 1
+            if(count[s[start_index]] == 0):
+                del count[s[start_index]]
+            start_index += 1
+        
+        if(all(value == 1 for key, value in count.items())):
+            total += 1
+        
+        return total

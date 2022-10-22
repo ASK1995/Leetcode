@@ -1,0 +1,10 @@
+class Solution:
+    def sumOfNumberAndReverse(self, num: int) -> bool:
+        for number in range(num + 1):
+            rev = str(number)
+            rev = rev[::-1]
+            rev = int(rev)
+            if(number + rev == num):
+                return True
+        
+        return False

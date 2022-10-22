@@ -1,0 +1,21 @@
+from collections import defaultdict
+
+class Solution:
+    def customSortString(self, order: str, s: str) -> str:
+        letters = defaultdict(lambda:0)
+        res = ""
+
+        for letter in s:
+            letters[letter] += 1
+        
+        for letter in order:
+
+            while(letters[letter] != 0):
+                res += letter
+                letters[letter] -= 1
+        
+        for key in letters.keys():
+            while(letters[key] != 0):
+                res += key
+                letters[key] -= 1
+        return res
