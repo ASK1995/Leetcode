@@ -1,0 +1,6 @@
+class Solution:
+    def getNoZeroIntegers(self, n: int) -> List[int]:
+        for i1 in range(n):
+            i2 = n - i1
+            if('0' not in str(i1) and '0' not in str(i2)):
+                return [i1, i2]

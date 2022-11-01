@@ -1,0 +1,14 @@
+class Solution:
+    def stringMatching(self, words: List[str]) -> List[str]:
+        n = len(words)
+        res = []
+
+        for index1 in range(len(words)):
+            for index2 in range(index1 + 1, len(words)):
+                word1 = words[index1]
+                word2 = words[index2]
+                if(word1.find(word2) != -1):
+                    res.append(word2)
+                elif(word2.find(word1) != -1):
+                    res.append(word1)
+        return list(set(res))

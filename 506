@@ -1,0 +1,30 @@
+from collections import defaultdict
+import heapq
+
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        scores = defaultdict(lambda:"")
+        
+        medals = score[:]
+        
+        heapq.heapify(medals)
+        while(len(medals) > 3):
+            x = heapq.heappop(medals)
+            scores[x] = str(len(medals) + 1)
+        
+        if(len(medals) == 3):
+            scores[medals[0]] = "Bronze Medal"
+            heapq.heappop(medals)
+            scores[medals[0]] = "Silver Medal"
+            scores[medals[1]] = "Gold Medal"
+        elif(len(medals) == 2):
+            scores[medals[0]] = "Silver Medal"
+            scores[medals[1]] = "Gold Medal"
+        else:
+            scores[medals[0]] = "Gold Medal"
+        
+        medals = []
+        for value in score:
+            medals.append(scores[value])
+        
+        return medals

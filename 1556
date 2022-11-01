@@ -1,0 +1,13 @@
+class Solution:
+    def thousandSeparator(self, n: int) -> str:
+        s = str(n)
+        res = ""
+        count = 0
+
+        for index, value in enumerate(s[::-1]):
+            res += value
+            count += 1
+            if(count % 3 == 0 and index != len(s) - 1):
+                res += '.'
+        
+        return res[::-1]

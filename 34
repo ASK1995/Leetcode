@@ -1,0 +1,12 @@
+import bisect
+
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        index1 = bisect.bisect_left(nums, target)
+        index2 = bisect.bisect_right(nums, target)
+        
+        if(index1 >= len(nums) or index2 > len(nums)):
+            return [-1, -1]
+        elif(nums[index1] == target and nums[index2 - 1] == target):
+            return [index1, index2 - 1]
+        return [-1, -1]

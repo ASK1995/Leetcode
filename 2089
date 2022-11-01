@@ -1,0 +1,21 @@
+import bisect
+
+class Solution:
+    def targetIndices(self, nums: List[int], target: int) -> List[int]:
+        nums.sort()
+        
+        res = []
+        
+        x = bisect.bisect_left(nums, target)
+        print(x)
+        if(x >= len(nums)):
+            return []
+        if(nums[x] == target):
+            res.append(x)
+        y = bisect.bisect_right(nums, target) - 1
+        if(x == y):
+            return res
+        elif nums[y - 1] == target:
+            for i in range(x+1, y+1):
+                res.append(i)
+        return res

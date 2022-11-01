@@ -1,0 +1,15 @@
+from collections import defaultdict
+
+class Solution:
+    def makeEqual(self, words: List[str]) -> bool:
+        count = defaultdict(lambda:0)
+        
+        for word in words:
+            for letter in word:
+                count[letter] += 1
+        
+        for key, value in count.items():
+            if(value % len(words) != 0):
+                return False
+        
+        return True

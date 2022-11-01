@@ -1,0 +1,26 @@
+class Solution:
+    def hammingDistance(self, x: int, y: int) -> int:
+        l1 = []
+        l2 = []
+        
+        while(x != 0):
+            l1.append(x%2)
+            x //= 2
+        
+        while(y != 0):
+            l2.append(y%2)
+            y //= 2
+        
+        if(len(l1) >= len(l2)):
+            while(len(l1) != len(l2)):
+                l2.append(0)
+        else:
+            while(len(l2) != len(l1)):
+                l1.append(0)
+        
+        count = 0
+        for value1, value2 in zip(l1, l2):
+            if(value1 != value2):
+                count += 1
+        
+        return count

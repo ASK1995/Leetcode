@@ -1,0 +1,20 @@
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+"""
+
+class Solution:
+    def maxDepth(self, root: 'Node') -> int:
+        if(root == None):
+            return 0
+        
+        highest = 1
+        for child in root.children:
+            x = 1 + self.maxDepth(child)
+            if(x > highest):
+                highest = x
+        
+        return highest
