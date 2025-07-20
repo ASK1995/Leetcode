@@ -6,5 +6,5 @@ class Solution:
             rev = int(rev)
             if(number + rev == num):
                 return True
-        
+
         return False

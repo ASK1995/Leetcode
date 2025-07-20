@@ -1,11 +1,9 @@
-import math
-
 class Solution:
     def percentageLetter(self, s: str, letter: str) -> int:
         count = 0
-        
-        for i in s:
-            if(i == letter):
+
+        for alphabet in s:
+            if(alphabet == letter):
                 count += 1
         
-        return math.floor(count*100/float(len(s)))
+        return count * 100 // len(s)
