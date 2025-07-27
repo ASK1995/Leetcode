@@ -1,7 +1,0 @@
-class Solution:
-    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
-        while(target != 'z'):
-            target = chr(ord(target) + 1)
-            if(target in letters):
-                return target
-        return letters[0]
