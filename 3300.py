@@ -1,11 +1,12 @@
 class Solution:
     def minElement(self, nums: List[int]) -> int:
+        res = float('inf')
         for i in range(len(nums)):
             num = nums[i]
-            res = 0
+            rev = 0
             while(num != 0):
-                res += num % 10
+                rev += num % 10
                 num //= 10
-            nums[i] = res
+            res = min(res, rev)
 
-        return min(nums)
+        return res

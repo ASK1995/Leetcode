@@ -12,8 +12,7 @@ class Solution:
         while(a != None and b != None and (reset_a >= 0 or reset_b >= 0)):
             if(a == b):
                 return a
-            a = a.next
-            b = b.next
+            a, b = a.next, b.next
             if(a == None):
                 a = headB
                 reset_a -= 1
@@ -22,4 +21,4 @@ class Solution:
                 b = headA
                 reset_b -= 1
 
-        return None;
+        return None

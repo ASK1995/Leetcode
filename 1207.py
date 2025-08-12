@@ -5,9 +5,7 @@ class Solution:
         count = defaultdict(lambda : 0)
         for num in arr:
             count[num] += 1
-        counts = set()
-        for key, value in count.items():
-            if(value in counts):
-                return False
-            counts.add(value)
-        return True
+        counts = set(count.values())
+        if(len(count) == len(counts)):
+            return True
+        return False

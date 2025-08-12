@@ -9,8 +9,7 @@ class Solution:
 
         prod = 1
         for index in range(len(nums) - 1, -1, -1):
-            num = nums[index]
             res[index] *= prod
-            prod *= num
+            prod *= nums[index]
 
         return res
