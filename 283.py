@@ -3,11 +3,10 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        i = 0
-        for index, value in enumerate(nums):
-            if(value != 0):
-                nums[i] = value
-                i += 1
-
-        for index in range(i, len(nums)):
-            nums[index] = 0
+        l, r = 0, 0
+        for r in range(len(nums)):
+            if(nums[r] != 0):
+                nums[l] = nums[r]
+                l += 1
+        for l in range(l, len(nums)):
+            nums[l] = 0

@@ -6,13 +6,13 @@
 #         self.right = None
 
 class Codec:
-
     def serialize(self, root):
         """Encodes a tree to a single string.
         
         :type root: TreeNode
         :rtype: str
         """
+        res = []
         def dfs(node):
             if not node:
                 res.append('N')
@@ -21,7 +21,6 @@ class Codec:
             dfs(node.left)
             dfs(node.right)
 
-        res = []
         dfs(root)
         return ','.join(res)
 
@@ -42,7 +41,6 @@ class Codec:
 
         vals = data.split(',')
         return dfs()
-        
 
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()

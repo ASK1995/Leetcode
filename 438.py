@@ -2,18 +2,20 @@ from collections import Counter
 
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
-        count = Counter()
-        check = Counter(p)
-        l = 0
+        letters = Counter()
+        target = Counter(p)
+        left = 0
         res = []
 
         for index, letter in enumerate(s):
-            count[letter] += 1
-            if(index - l + 1 == len(p)):
-                if(count == check):
-                    res.append(l)
-                count[s[l]] -= 1
-                if(count[s[l]] == 0):
-                    del count[s[l]]
-                l += 1
+            letters[letter] += 1
+            if(len(p) == index - left + 1):
+                if(letters == target):
+                    res.append(left)
+                del_letter = s[left]
+                letters[del_letter] -= 1
+                left += 1
+                if(letters[del_letter] == 0):
+                    del letters[del_letter]
+
         return res
