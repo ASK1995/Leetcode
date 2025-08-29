@@ -5,53 +5,43 @@
 #         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        head1, head2 = l1, l2
         carry = 0
         head = ListNode()
-        current = head
-        prev = None
-
-        while(head1 != None and head2 != None):
-            total = head1.val + head2.val + carry
+        prev, curr = None, head
+        while(l1 and l2):
+            total = l1.val + l2.val + carry
             carry = 0
             if(total >= 10):
                 carry = 1
                 total -= 10
+            curr.val = total
+            curr.next = ListNode()
+            prev, curr, l1, l2 = curr, curr.next, l1.next, l2.next
 
-            current.val = total
-            current.next = ListNode()
-            prev, current = current, current.next
-            head1 = head1.next
-            head2 = head2.next
-
-        while(head1 != None):
-            total = head1.val + carry
+        while(l1):
+            total = l1.val + carry
             carry = 0
             if(total >= 10):
                 carry = 1
                 total -= 10
+            curr.val = total
+            curr.next = ListNode()
+            prev, curr, l1 = curr, curr.next, l1.next
 
-            current.val = total
-            current.next = ListNode()
-            prev, current = current, current.next
-            head1 = head1.next
-
-        while(head2 != None):
-            total = head2.val + carry
+        while(l2):
+            total = l2.val + carry
             carry = 0
             if(total >= 10):
                 carry = 1
                 total -= 10
+            curr.val = total
+            curr.next = ListNode()
+            prev, curr, l2 = curr, curr.next, l2.next
 
-            current.val = total
-            current.next = ListNode()
-            prev, current = current, current.next
-            head2 = head2.next
-
-        if(carry != 0):
-            current.val = carry
-            current.next = None
+        if(carry):
+            curr.val = carry
+            curr.next = None
         else:
             prev.next = None
-    
+
         return head

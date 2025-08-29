@@ -5,10 +5,10 @@ class Solution:
         count = defaultdict(lambda:0)
         max_key, max_value = None, -1
 
-        for response in responses:
-            res = set(response)
+        for words in responses:
+            words = set(words)
 
-            for word in res:
+            for word in words:
                 count[word] += 1
                 if(count[word] > max_value):
                     max_key, max_value = word, count[word]

@@ -1,12 +1,14 @@
 class Solution:
     def generateTag(self, caption: str) -> str:
-        res = "#"
-        captions = caption.split()
-        if(len(captions) == 0):
-            return res
+        words = caption.split()
+        res = ""
+        if(len(words) == 0):
+            return "#"
 
-        res += captions[0].lower()
-        for i in range(1, len(captions)):
-            res += captions[i].title()
+        for index, word in enumerate(words):
+            if(index == 0):
+                res += '#' + word.lower()
+            else:
+                res += word.title()
 
         return res[:100]

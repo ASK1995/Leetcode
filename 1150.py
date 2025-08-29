@@ -21,7 +21,6 @@ class Solution:
                 right = m
         if(left == -1):
             return False
-        print(left, right)
         if((right - left + 1) > len(nums)//2):
             return True
         return False
