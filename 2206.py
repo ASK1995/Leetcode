@@ -1,9 +1,10 @@
-from collections import Counter
-
 class Solution:
     def divideArray(self, nums: List[int]) -> bool:
-        count = Counter(nums)
-        for key, value in count.items():
-            if(value % 2 != 0):
-                return False
-        return True
+        odds = set()
+
+        for num in nums:
+            if num in odds:
+                odds.discard(num)
+            else:
+                odds.add(num)
+        return len(odds) == 0

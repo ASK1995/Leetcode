@@ -1,15 +1,11 @@
-from collections import defaultdict
-
 class Solution:
     def areAlmostEqual(self, s1: str, s2: str) -> bool:
-        count1, count2 = Counter(s1), Counter(s2)
-
-        if(count1 != count2):
-            return False
-
-        diff = 0
+        c = []
         for i in range(len(s1)):
             if(s1[i] != s2[i]):
-                diff += 1
-
-        return diff == 0 or diff == 2
+                c.append(i)
+        if(len(c) == 2):
+            if s1[c[0]] == s2[c[1]] and s1[c[1]] == s2[c[0]]:
+                return True
+            return False
+        return not c

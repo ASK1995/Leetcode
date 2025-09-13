@@ -12,10 +12,9 @@ class Solution:
             if(len(p) == index - left + 1):
                 if(letters == target):
                     res.append(left)
-                del_letter = s[left]
-                letters[del_letter] -= 1
+                letters[s[left]] -= 1
+                if(letters[s[left]] == 0):
+                    del letters[s[left]]
                 left += 1
-                if(letters[del_letter] == 0):
-                    del letters[del_letter]
 
         return res

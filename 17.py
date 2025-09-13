@@ -20,8 +20,9 @@ class Solution:
             if(i == len(digits)):
                 res.append("".join(path.copy()))
                 return
-            for val in mapper[digits[i]]:
-                path.append(val)
+            digit = digits[i]
+            for letter in mapper[digit]:
+                path.append(letter)
                 dfs(i + 1, path)
                 path.pop()
 
